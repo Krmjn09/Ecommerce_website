@@ -6,7 +6,7 @@ const ProductDisplay = (props) => {
   const { product } = props;
   return (
     <div className="productdisplay">
-      <div className="productdisplay__left">
+      <div className="productdisplay-left">
         <div className="productdisplay-img-list">
           <img src={product.image} alt="product" />
           <img src={product.image} alt="product" />
@@ -14,11 +14,7 @@ const ProductDisplay = (props) => {
           <img src={product.image} alt="product" />
         </div>
         <div className="productdisplay-img">
-          <img
-            src="{product.image}"
-            alt=""
-            className="productdisplay-main-img"
-          />
+          <img src={product.image} alt="" className="productdisplay-main-img" />
         </div>
       </div>
       <div className="productdisplay__right">
@@ -32,8 +28,10 @@ const ProductDisplay = (props) => {
           <p>{122}</p>
         </div>
         <div className="productdisplay-right-prices">
-          <div className="productdisplay-right-">${product.new_price}</div>
           <div className="productdisplay-right-price-new">
+            ${product.new_price}
+          </div>
+          <div className="productdisplay-right-price-old">
             ${product.old_price}
           </div>
         </div>
@@ -45,14 +43,21 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-size">
           <h1>Select size</h1>
-          <div className="productdisplay-right-size-list">
-            <div className="productdisplay-right-size-item">S</div>
-            <div className="productdisplay-right-size-item">M</div>
-            <div className="productdisplay-right-size-item">L</div>
-            <div className="productdisplay-right-size-item">XL</div>
+          <div className="productdisplay-right-size">
+            <div>S</div>
+            <div>M</div>
+            <div>L</div>
+            <div>XL</div>
+            <div>XXL</div>
           </div>
         </div>
-        
+        <button className="addtocart">ADD TO CART</button>
+        <p className="productdisplay-right-category">
+          <span>Category:</span>Women , Tshirt, Crop Top
+        </p>
+        <p className="productdisplay-right-category">
+          <span>Tags</span>Modern , Latest
+        </p>
       </div>
     </div>
   );

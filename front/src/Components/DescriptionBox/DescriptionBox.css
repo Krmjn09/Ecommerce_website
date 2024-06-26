@@ -1,0 +1,28 @@
+.descriptionbox {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.descriptionbox-navigator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.descriptionbox-nax-box {
+    padding: 10px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.descriptionbox-nax-box.fade {
+    background-color: black;
+    color: white;
+}
+
+.descriptionbox-description {
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    
+}

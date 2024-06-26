@@ -1,0 +1,42 @@
+.relatedproducts {
+    margin: 20px;
+}
+
+.relatedproducts h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.relatedproducts hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.relatedproducts-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Styles for the Item component */
+.item {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-name {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.item-id {
+    font-size: 14px;
+    color: #888;
+}
