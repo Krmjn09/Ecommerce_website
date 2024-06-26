@@ -1,0 +1,180 @@
+/* CartItems.css */
+
+.cartitems {
+  font-family: 'Arial', sans-serif;
+  /* max-width: 900px; */
+  margin: 30px auto;
+  background-color: #fafafa;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.cartitems-format-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+  color: #444;
+  padding: 15px 0;
+}
+
+.cartitems-format {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cartitems-format:last-child {
+  border-bottom: none;
+}
+
+.cartitems-format img {
+  max-width: 50px;
+  border-radius: 8px;
+}
+
+.cartitems-format p,
+.cartitems-format button {
+  margin: 0;
+  font-size: 15px;
+  color: #666;
+}
+
+.cartitems-quantity {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: default;
+  transition: background-color 0.3s;
+}
+
+.cartitems-quantity:hover {
+  background-color: #f1f1f1;
+}
+
+.carticon-remove-icon {
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.carticon-remove-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 15px 0;
+}
+
+.cartitems-down {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.cartitems-total {
+  width: 45%;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cartitems-total h1 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.cartitems-total-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.cartitems-total-price p {
+  margin: 10px 0;
+}
+
+.cartitems-total-price p:last-child {
+  font-weight: bold;
+}
+
+.cartitems-total button {
+  background-color: #af113b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.cartitems-total button:hover {
+  background-color: #991231;
+  transform: translateY(-2px);
+}
+
+.cartitems-promocode {
+  width: 45%;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cartitems-promocode p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.cartitems-promobox {
+  display: flex;
+  gap: 10px;
+}
+
+.cartitems-promobox input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cartitems-promobox input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.cartitems-promobox button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.cartitems-promobox button:hover {
+  background-color: #0069d9;
+  transform: translateY(-2px);
+}

@@ -1,24 +1,98 @@
+/* Popular.css */
+
 .popular {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  height: 90vh;
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fafafa;
+ 
 }
+
 .popular h1 {
-  font-size: 40px;
-  font-weight: 600;
-  color: #090909;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
+
 .popular hr {
-  width: 200px;
-  height: 6px;
-  background: #252525;
-  border-radius: 10px;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 10px 0 20px 0;
 }
+
 .popular-item {
   display: flex;
-  gap: 30px;
-  /*  */
-  margin-top: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
+
+.item {
+  flex: 1 1 calc(25% - 20px); /* Adjust the percentage based on the number of items per row */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(188, 184, 184, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.item-info h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.item-info p {
+  font-size: 16px;
+  color: #777;
+}
+
+.item-info .price {
+  font-size: 16px;
+  color: #af113b;
+  font-weight: bold;
+}
+
+@media (max-width: 1280px) {
+  .popular {
+    height: 100%;
+  }
+  .popular h1 {
+    font-size: 30px;
+  }
+  .popular hr {
+    width: 150px;
+    height: 4px;
+  }
+  .popular-item {
+    /* flex-direction: column; */
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .popular-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
