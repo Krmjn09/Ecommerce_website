@@ -95,14 +95,16 @@ const Product = mongoose.model("Product", {
 })
 app.post("/addproduct", async (req, res) => {
   let products = await Product.findOne({})
-  let id;
+  let id
   if (products.length > 0) {
-    let last_product_array = products.slice(-1);
-    let last_product = last_product_array[0];
-    id = last_product.id + 1;
+    let last_product_array = products.slice(-1)
+    let last_product = last_product_array[0]
+    id = last_product.id + 1
+  } else {
+    id = 1
   }
   const product = new Product({
-    id: req.body.id,
+    id: id,
     name: req.body.name,
     image: req.body.image,
     category: req.body.category,
@@ -113,6 +115,20 @@ app.post("/addproduct", async (req, res) => {
   await product.save()
   console.log("Product added successfully")
   res.json({ success: true, name: req.body.name })
+})
+
+//creating api for deleting products
+app.post("/deleteproduct", async (req, res) => {
+  await Product.findOneAndDelete({ id: req.body.id })
+  console.log("Product deleted successfully")
+  res.json({ success: true, name: req.body.name })
+})
+
+//creating api forgetting all products
+app.get("/getproducts", async (req, res) => {
+  let products = await Product.find({})
+  console.log("Products fetched successfully")
+  res.json(products)
 })
 
 // Start the server
