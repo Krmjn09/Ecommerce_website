@@ -1,4 +1,4 @@
-const port = 5000
+const port = 3000
 const express = require("express")
 const app = express()
 const cors = require("cors")
@@ -21,7 +21,7 @@ if (!fs.existsSync(uploadDir)) {
 // Connect to MongoDB with error handling and TLS option
 mongoose
   .connect(
-    "mongodb+srv://ecommerce:ecommerce@cluster0.w8azixo.mongodb.net/Ecommerce",
+    "mongodb+srv://ecommerce:ecommerce@cluster0.w8azixo.mongodb.net/Ecommerce?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
