@@ -1,4 +1,4 @@
-const port = 3000
+const port = 8000
 const express = require("express")
 const app = express()
 const cors = require("cors")
@@ -58,7 +58,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
   })
 })
 
-// Define the schema for the user
+// Define the schema for the product
 const Product = mongoose.model("Product", {
   id: {
     type: Number,
@@ -93,8 +93,9 @@ const Product = mongoose.model("Product", {
     default: true,
   },
 })
+
 app.post("/addproduct", async (req, res) => {
-  let products = await Product.findOne({})
+  let products = await Product.find({})
   let id
   if (products.length > 0) {
     let last_product_array = products.slice(-1)
@@ -117,21 +118,102 @@ app.post("/addproduct", async (req, res) => {
   res.json({ success: true, name: req.body.name })
 })
 
-//creating api for deleting products
+// Creating API for deleting products
 app.post("/deleteproduct", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id })
   console.log("Product deleted successfully")
-  res.json({ success: true, name: req.body.name })
+  res.json({ success: true })
 })
 
-//creating api forgetting all products
+// Creating API for getting all products
 app.get("/getproducts", async (req, res) => {
   let products = await Product.find({})
   console.log("Products fetched successfully")
   res.json(products)
 })
 
-// Start the server
+app.get("/allproducts", async (req, res) => {
+  let products = await Product.find({})
+  console.log("Products fetched successfully")
+  res.json(products)
+})
+
+// Define the schema for the user
+const User = mongoose.model("User", {
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  cartData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+})
+
+// Creating API for user registration
+app.post("/signup", async (req, res) => {
+  let check = await User.findOne({ email: req.body.email })
+  if (check) {
+    return res.status(400).json({ message: "User already exists" })
+  }
+
+  let cart = {}
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0
+  }
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    cartData: cart,
+  })
+  await user.save()
+
+  const data = {
+    user: {
+      id: user.id,
+    },
+  }
+  const token = jwt.sign(data, "secret_ecom")
+  res.json({ success: true, token: token })
+})
+
+// Creating API for user login
+app.post("/login", async (req, res) => {
+  let user = await User.findOne({ email: req.body.email })
+  if (!user) {
+    return res.status(400).json({ message: "Invalid credentials" })
+  }
+  if (req.body.password !== user.password) {
+    return res.status(400).json({ message: "Invalid credentials" })
+  }
+  const data = {
+    user: {
+      id: user.id,
+    },
+  }
+  const token = jwt.sign(data, "secret_ecom")
+  res.json({ success: true, token: token })
+})
+
+app.get("/newcollections", async (req, res) => {
+  let products = await Product.find({ category: "new" })
+  console.log("New collections fetched successfully")
+  res.json(products)
+})
+
 app.listen(port, (error) => {
   if (error) {
     console.log("Error while starting the server")
